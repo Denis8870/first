@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота №7 - Завдання 2</title>
+</head>
+<body>
+    <h2>Завдання 2. Форма з усіма елементами</h2>
+
+    <form action="ZabaraLab07-2-result.htm" target="_blank" method="get">
+        Ваше ім'я: <input type="text" name="name" size="40" maxlength="50"><br><br>
+
+        Введіть пароль: <input type="password" name="pass" size="20" maxlength="20"><br><br>
+
+        Ваша стать:
+        <input type="radio" name="pol" value="male">Чоловіча
+        <input type="radio" name="pol" value="female">Жіноча<br><br>
+
+        Ваші навички:
+        <input type="checkbox" name="skill1" value="HTML">HTML
+        <input type="checkbox" name="skill2" value="JS">JavaScript
+        <input type="checkbox" name="skill3" value="CSS">CSS<br><br>
+
+        Напишіть про себе:<br>
+        <textarea name="about" rows="5" cols="60" wrap="off"></textarea><br><br>
+
+        Оберіть курс:
+        <select name="curs" size="1">
+            <option value="1">Перший</option>
+            <option value="2">Другий</option>
+            <option value="3">Третій</option>
+        </select><br><br>
+
+        Завантажити файл: <input type="file" name="fileupload" size="50" accept=".txt,.pdf,.doc"><br><br>
+
+        <input type="submit" value="Відіслати">
+        <input type="reset" value="Очистити">
+        <input type="button" value="Показати дату" onclick="alert(Date());">
+    </form>
+</body>
+</html>

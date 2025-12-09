@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Тест сенсорної карти</title>
+
+    <style>
+        img {
+            width: 1920px !important;
+            height: 1080px !important;
+            max-width: none !important;
+            max-height: none !important;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Перевірка навігаційної карти</h2>
+
+<img src="image\photo.jpg" usemap="#myMap">
+
+<map name="myMap">
+
+   
+    <area shape="rect" coords="0,0,960,1080"
+          href="#"
+          title="Ліва половина екрана">
+
+   
+    <area shape="rect" coords="960,0,1920,1080"
+          href="#"
+          title="Права половина екрана">
+
+</map>
+
+</body>
+</html>

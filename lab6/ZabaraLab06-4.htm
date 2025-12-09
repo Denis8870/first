@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>IvanennkoLab06-4</title>
+</head>
+
+<body>
+
+<h2>Графічна карта з переходами</h2>
+
+<map name="geomap">
+    <!-- Прямокутник → Домашня сторінка -->
+    <area shape="rect" coords="20,20,220,120" href="ZabaraLab01-9.htm" title="Домашня сторінка">
+
+    <!-- Круг → Мої гіперпосилання -->
+    <area shape="circle" coords="350,100,60" href="ZabaraLab05-3.htm" title="Мої гіперпосилання">
+
+    <!-- Багатокутник → Моя Батьківщина -->
+    <area shape="poly" coords="100,200,200,250,150,320,70,300" 
+          href="ZabaraLab06-3.htm" title="Моя Батьківщина">
+</map>
+
+<img src="image/figures.png" width="500" usemap="#geomap">
+</body>
+</html>

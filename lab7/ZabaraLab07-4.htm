@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота №7 - Завдання 4</title>
+</head>
+<body>
+    <h2>Завдання 4. Форма замовлення товару</h2>
+
+    <form action="ZabaraLab07-4-result.htm" target="_blank" method="get">
+        Номер банківського рахунку: <input type="text" name="bankacc" size="30"><br><br>
+        Особистий номер користувача: <input type="text" name="usernum" size="20"><br><br>
+
+        Список товарів:<br>
+        <select name="products" size="5" multiple>
+            <option value="prod1">Товар 1</option>
+            <option value="prod2">Товар 2</option>
+            <option value="prod3">Товар 3</option>
+            <option value="prod4">Товар 4</option>
+        </select><br><br>
+
+        Коментарі:<br>
+        <textarea name="comment" rows="6" cols="60" wrap="off"></textarea><br><br>
+
+        Вибір способу оплати:<br>
+        <input type="radio" name="pay" value="cash" checked>Готівковий
+        <input type="radio" name="pay" value="cashless">Безготівковий<br><br>
+
+        Додаткова інформація:<br>
+        <input type="checkbox" name="info1" value="balance">Залишки на рахунку<br>
+        <input type="checkbox" name="info2" value="payments">Список останніх виплат<br><br>
+
+        <input type="submit" value="Відіслати">
+        <input type="reset" value="Очистити">
+    </form>
+</body>
+</html>

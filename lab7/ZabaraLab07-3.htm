@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Анкета</title>
+    <style>
+        body {
+            background-color: #dff4ff;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 700px;
+            border-collapse: collapse;
+            background-color: #d9f0f7;
+            margin: 20px auto;
+            border: 2px solid #000;
+        }
+        th {
+            background-color: #c0e0f7;
+            color: red;
+            font-size: 24px;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #000;
+        }
+        td {
+            border: 1px solid #000;
+            padding: 5px;
+            vertical-align: top;
+        }
+        td.number {
+            width: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+        td.label {
+            width: 250px;
+            font-weight: bold;
+        }
+        td.input {
+            width: 400px;
+        }
+        input[type="text"] {
+            width: 95%;
+            padding: 4px;
+            font-size: 14px;
+        }
+        textarea {
+            width: 95%;
+            font-size: 14px;
+            resize: none;
+        }
+        .buttons {
+            width: 700px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 8px 15px;
+            font-size: 16px;
+            margin: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="ZabaraLab07-3-result.htm" method="get" target="_blank">
+        <table>
+            <tr>
+                <th colspan="3">Анкета</th>
+            </tr>
+            <tr>
+                <td class="number">1.</td>
+                <td class="label">Прізвище</td>
+                <td class="input"><input type="text" name="surname" maxlength="50"></td>
+            </tr>
+            <tr>
+                <td class="number">2.</td>
+                <td class="label">Ім'я, по батькові</td>
+                <td class="input"><input type="text" name="fullname" maxlength="100"></td>
+            </tr>
+            <tr>
+                <td class="number">3.</td>
+                <td class="label">Число і рік народження</td>
+                <td class="input"><input type="text" name="birthdate" maxlength="20" placeholder="ДД.ММ.РРРР"></td>
+            </tr>
+            <tr>
+                <td class="number">4.</td>
+                <td class="label">Домашня адреса</td>
+                <td class="input"><input type="text" name="address" maxlength="150"></td>
+            </tr>
+            <tr>
+                <td class="number">5.</td>
+                <td class="label">Місце навчання (роботи)</td>
+                <td class="input"><input type="text" name="workplace" maxlength="150"></td>
+            </tr>
+            <tr>
+                <td class="number">6.</td>
+                <td class="label">Домашній (робочий) телефон</td>
+                <td class="input"><input type="text" name="phone" maxlength="20"></td>
+            </tr>
+            <tr>
+                <td class="number">7.</td>
+                <td class="label">E-mail</td>
+                <td class="input"><input type="text" name="email" maxlength="100"></td>
+            </tr>
+            <tr>
+                <td class="number" rowspan="6">8.</td>
+                <td class="label" rowspan="6">Область наукових інтересів</td>
+                <td class="input">
+                    1. <input type="text" name="interest1" maxlength="100"><br><br>
+                    2. <input type="text" name="interest2" maxlength="100"><br><br>
+                    3. <input type="text" name="interest3" maxlength="100"><br><br>
+                    4. <input type="text" name="interest4" maxlength="100"><br><br>
+                    5. <input type="text" name="interest5" maxlength="100"><br><br>
+                    6. <input type="text" name="interest6" maxlength="100"><br>
+                </td>
+            </tr>
+        </table>
+
+        <div class="buttons">
+            <input type="reset" value="Відмінити введення">
+            <input type="submit" value="Надіслати дані та перейти до 2 етапу реєстрації">
+        </div>
+    </form>
+
+</body>
+</html>
