@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>ZabaraLab08-1 — Inline Styles</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f7f7f7; margin: 30px;">
+  <h1 style="font-family: 'Times New Roman', Times, serif; color: #2a2a72; font-size: 28pt; text-align: center;">
+    Приклад внутрішніх таблиць стилів (Inline)
+  </h1>
+
+  <p style="
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14pt;
+        font-weight: normal;
+        color: #000000;
+        text-align: left;
+        text-indent: 2%;
+        line-height: 20pt;
+        background-color: #fffbe6;
+        padding: 10px;
+        border: 2px solid #ffd966;
+        ">
+    Це перший абзац. Тут застосовані базові стилі: <em>font-family</em>, <em>font-size</em>, <em>color</em>, 
+    <em>text-indent</em>, <em>line-height</em>, фон, падінги та рамка.
+  </p>
+
+  <p style="
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 12pt;
+        font-weight: bold;
+        font-style: italic;
+        color: blue;
+        text-decoration: underline;
+        text-transform: uppercase;
+        margin-top: 20px;
+        ">
+    Це другий абзац — демонстрація жирного, курсиву, підкреслення і text-transform.
+  </p>
+
+  <p style="
+        font-family: Georgia, serif;
+        font-size: 16px;
+        color: #333333;
+        text-align: justify;
+        text-indent: 5%;
+        ">
+    Третій абзац вирівняний по ширині (якщо браузер підтримує) — <code>text-align: justify</code>. 
+    Тут використано іншу сімейство шрифтів (serif) і більший розмір.
+  </p>
+
+  <p style="
+        font-family: Arial;
+        font-size: 13pt;
+        color: #8a2be2;
+        font-weight: 700;
+        text-decoration: none;
+        ">
+    Параграф із фіолетовим кольором та номерною жирністю (700 ≈ bold).
+  </p>
+
+  <ul style="margin-left: 40px;">
+    <li style="list-style-type: disc; font-family: Verdana; font-size: 12pt;">Пункт списку — disk</li>
+    <li style="list-style-type: circle; font-family: Verdana; font-size: 12pt;">Пункт списку — circle</li>
+    <li style="list-style-type: square; font-family: Verdana; font-size: 12pt;">Пункт списку — square</li>
+  </ul>
+
+  <p style="font-size: 11pt; color: #666;">
+    В кінці — невеликий абзац із сірим кольором.
+  </p>
+</body>
+</html>

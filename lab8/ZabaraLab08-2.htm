@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>ZabaraLab08-2 — Global Style Sheet</title>
+  <style>
+    /* Глобальні стилі для всього документа */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 14pt;
+      color: #111;
+      background-color: #eef6ff;
+      margin: 30px;
+    }
+
+    h1 {
+      font-family: 'Times New Roman', Times, serif;
+      color: #8b0000;
+      font-size: 30pt;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .section {
+      background-color: #ffffff;
+      border: 1px solid #cfd8e3;
+      padding: 12px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    p {
+      line-height: 20pt;
+      text-indent: 2%;
+      text-align: justify;
+      margin: 12px 8px;
+    }
+
+    p.lead {
+      font-size: 16pt;
+      font-weight: bold;
+      color: #2a4d8f;
+    }
+
+    .note {
+      font-style: italic;
+      color: #5b5b5b;
+      font-size: 12pt;
+    }
+
+    .right {
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <h1>Об'єднаний стиль для абзаців і блоків</h1>
+
+  <div class="section">
+    <p class="lead">Це секція 1 — використовується клас .section. Усі параграфи наслідують загальні стилі з верхнього блока <code>p</code>.</p>
+    <p>Тут — звичайний параграф. Він має відступ першого рядка 2% і вирівнювання по ширині. 
+       Закріплення загального стилю дозволяє швидко змінювати вигляд одночасно для всіх абзаців.</p>
+    <p class="note">Примітка: цей текст оформлений курсивом і має інший колір.</p>
+  </div>
+
+  <div class="section">
+    <p class="lead">Секція 2 — демонстрація повторного використання стилів</p>
+    <p>Ще один абзац у другій секції. Тут видно, що немає необхідності дублювати атрибут style у кожному тегі — всі властивості визначені в <code>&lt;style&gt;</code>.</p>
+    <p class="right">Текст, вирівняний праворуч.</p>
+  </div>
+
+  <div class="section">
+    <p>Заключний блок: змінюючи лише правила в <code>&lt;style&gt;</code>, можна повністю «перефарбувати» документ.</p>
+  </div>
+</body>
+</html>
