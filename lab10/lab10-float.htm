@@ -1,0 +1,117 @@
+<!-- save as float.html -->
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Layout — flex full width</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; font-family: Arial, sans-serif; background: #fff; }
+
+  /* wrapper займає весь екран і робимо його flex вертикально */
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 3px;
+  }
+
+  .block {
+    border: 1px solid rgba(255,255,255,0.9);
+    margin: 0 3px 3px 0;
+  }
+
+  /* --- Верхній рядок: top + sidebar --- */
+  .row-top {
+    display: flex;
+    flex: 32; /* пропорція висоти */
+    margin-bottom: 3px;
+  }
+  .top { 
+    background: #5b9bd5;
+    flex: 1;
+  }
+  .sidebar {
+    background: #6b777a;
+    width: 200px;
+  }
+
+  /* --- Другий ряд: a, b, c --- */
+  .row-mid {
+    display: flex;
+    flex: 22;
+    margin-bottom: 3px;
+  }
+  .a { background: #6ad0cc; flex: 1; }
+  .b { background: #df6f6f; flex: 1; }
+  .c { background: #ffc400; flex: 1; }
+
+  /* --- Третій ряд: зелений на повну ширину --- */
+  .row-mid2 {
+    display: flex;
+    flex: 22;
+    margin-bottom: 3px;
+  }
+  .green { 
+    background: #28a67a; 
+    flex: 1; /* тепер займає всю ширину */
+  }
+
+  /* --- Четвертий ряд: помаранчевий повна ширина --- */
+  .row-bottom { flex: 18; }
+  .orange { background: #b84f14; width: 100%; height: 100%; }
+
+  /* --- Адаптивність --- */
+  @media (max-width: 949px) {
+    .sidebar { width: 160px; }
+  }
+
+  @media (max-width: 749px) {
+    .row-top, .row-mid, .row-mid2 {
+      flex-direction: column;
+      flex: unset;
+      height: auto;
+    }
+    .top, .sidebar, .a, .b, .c, .green {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 3px;
+    }
+  }
+
+  @media (max-width: 499px) {
+    .row-top { height: 14vh; }
+    .row-mid { height: 12vh; }
+    .row-mid2 { height: 12vh; }
+    .row-bottom { height: 24vh; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Верхній рядок: top + sidebar -->
+    <div class="row-top">
+      <div class="top block"></div>
+      <div class="sidebar block"></div>
+    </div>
+
+    <!-- Другий рядок: a, b, c -->
+    <div class="row-mid">
+      <div class="a block"></div>
+      <div class="b block"></div>
+      <div class="c block"></div>
+    </div>
+
+    <!-- Третій рядок: зелений на повну ширину -->
+    <div class="row-mid2">
+      <div class="green block"></div>
+    </div>
+
+    <!-- Четвертий рядок: помаранчевий -->
+    <div class="row-bottom">
+      <div class="orange block"></div>
+    </div>
+  </div>
+</body>
+</html>
