@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №8 | Гра "Послідовність"</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #10b981;
+            --accent-hover: #059669;
+            --text-main: #f8fafc;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 650px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Екрани гри */
+        .screen {
+            display: none;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+        }
+
+        .active {
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--accent-color);
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        button:hover { background-color: var(--accent-hover); }
+        button:active { transform: scale(0.98); }
+
+        /* Ігровий інтерфейс */
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            padding: 0 10px;
+        }
+
+        .timer {
+            font-weight: bold;
+            color: #ef4444;
+            background: #451a03;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #b91c1c;
+        }
+
+        /* Поле гри (Таблиця 4х5 для 20 цифр) */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .cell {
+            background-color: #334155;
+            aspect-ratio: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            cursor: pointer;
+            user-select: none;
+            font-weight: bold;
+            border: 2px solid transparent;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        .cell:hover {
+            border-color: #94a3b8;
+        }
+
+        /* Підсвічування вибраної вірної цифри */
+        .cell.correct {
+            background-color: #065f46 !important;
+            color: #a7f3d0 !important;
+            border-color: var(--accent-color);
+            cursor: default;
+            opacity: 0.7;
+        }
+
+        /* Статистика */
+        .stats-section {
+            margin-top: 30px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stats-section h3 {
+            margin-top: 0;
+            color: #94a3b8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        th { background-color: #1e293b; color: #94a3b8; }
+
+        /* Підсвічування найкращого результату (найменший час) */
+        .best-record {
+            background-color: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        
+        <div id="menu-screen" class="screen active">
+            <h1>Гра "Послідовність"</h1>
+            <p style="color: #94a3b8; margin-bottom: 40px;">Знайдіть та клікніть по черзі всі цифри від 1 до 20 якомога швидше!</p>
+            <button id="start-game-btn">Почати гру</button>
+        </div>
+
+        <div id="game-screen" class="screen">
+            <div class="game-header">
+                <div>Ціль: <span id="next-num" style="font-weight:bold; color:var(--accent-color);">1</span></div>
+                <div class="timer">Час: <span id="time-left">60</span>с</div>
+            </div>
+
+            <div id="grid" class="game-grid"></div>
+
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button id="restart-btn" style="background-color: #475569;">Почати з початку</button>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h3>Таблиця результатів</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>№ Спроби</th>
+                        <th>Статус партії</th>
+                        <th>Час проходження</th>
+                    </tr>
+                </thead>
+                <tbody id="stats-table-body">
+                    </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
