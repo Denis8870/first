@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №4 | Функції та Масиви</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --accent-color: #0ea5e9;
+            --accent-hover: #0284c7;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.25rem;
+            margin-bottom: 10px;
+        }
+
+        .tasks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 24px;
+        }
+
+        @media (max-width: 500px) {
+            .tasks-grid { grid-template-columns: 1fr; }
+        }
+
+        .task-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .task-card h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.15rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .task-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0 0 16px 0;
+            flex-grow: 1;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .result-area {
+            margin-top: 12px;
+            padding: 10px;
+            background: #f1f5f9;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            color: #334155;
+            border-left: 4px solid var(--accent-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Лабораторна робота №4</h1>
+            <p>Тема: Функції та масиви в JavaScript</p>
+        </header>
+
+        <main class="tasks-grid">
+            <div class="task-card">
+                <h2>Завдання 1. Функція seconds()</h2>
+                <p>Повертає залишок від ділення числа секунд на 60.</p>
+                <button onclick="runSeconds()">Виконати</button>
+                <div id="res-1" class="result-area">Тут буде результат...</div>
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 2. Периметр багатокутника</h2>
+                <p>Рахує периметр за довжиною сторони та їх кількістю.</p>
+                <button onclick="runPerimeter()">Виконати</button>
+                <div id="res-2" class="result-area">Тут буде результат...</div>
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 3. FizzBuzz в консоль</h2>
+                <p>Виводить числа від 1 до N замінюючи кратні 3 на fizz, 5 на buzz, і 3 та 5 на fizzbuzz.</p>
+                <button onclick="runFizzBuzz()">Виконати</button>
+                <div id="res-3" class="result-area">Результат буде в консолі (F12)</div>
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 4. Середнє арифметичне 3 чисел</h2>
+                <p>Приймає 3 параметри та виводить їх середнє значення.</p>
+                <button onclick="runCalculate()">Виконати</button>
+                <div id="res-4" class="result-area">Тут буде результат...</div>
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 5. Функція isDivisible()</h2>
+                <p>Перевірка подільності числа n на x та y (3-ма різними способами).</p>
+                <button onclick="runIsDivisible()">Виконати</button>
+                <div id="res-5" class="result-area">Тут буде результат...</div>
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 6. Статистика одновимірного масиву</h2>
+                <p>Створення масиву з N елементів, пошук min, max, суми, середнього та непарних чисел.</p>
+                <button onclick="runArrayStats()">Виконати</button>
+                <div id="res-6" class="result-area">Тут буде результат...</div>
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 7. Двовимірний масив 5х5</h2>
+                <p>Заміна від'ємних чисел на 0, а додатних на 1 по головній діагоналі матриці.</p>
+                <button onclick="runMatrixDiagonal()">Виконати</button>
+                <div id="res-7" class="result-area">Тут буде результат...</div>
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 8. Арифметика (4 функції)</h2>
+                <p>Калькулятор вибору операцій (Add, Sub, Mul, Div) з перевіркою ділення на нуль.</p>
+                <button onclick="runArithmetic()">Виконати</button>
+                <div id="res-8" class="result-area">Тут буде результат...</div>
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 9. Комплексний аналіз числа</h2>
+                <p>Визначає знак числа, чи є воно простим, та подільність на 2, 5, 3, 6, 9.</p>
+                <button onclick="runNumberAnalysis()">Виконати</button>
+                <div id="res-9" class="result-area">Тут буде результат...</div>
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 10. Модифікація та реверс масиву</h2>
+                <p>Перевертає масив, підносить числа до квадрату, а інші типи залишає без змін.</p>
+                <button onclick="runArrayTransform()">Виконати</button>
+                <div id="res-10" class="result-area">Тут буде результат...</div>
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 11. Видалення дублікатів</h2>
+                <p>Приймає масив із дублікатами й повертає масив лише з унікальними значеннями.</p>
+                <button onclick="runRemoveDuplicates()">Виконати</button>
+                <div id="res-11" class="result-area">Тут буде результат...</div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
