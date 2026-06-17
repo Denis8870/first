@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №9 | Гра "Знайди пару" за допомогою jQuery UI</title>
+    
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    
+    <style>
+        :root {
+            --bg-color: #f0f4f8;
+            --card-bg: #ffffff;
+            --accent-color: #0284c7;
+            --accent-hover: #0369a1;
+            --text-main: #1e293b;
+            --border-color: #cbd5e1;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .screen {
+            display: none;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .active { display: block; }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        button, select {
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+        }
+
+        button:hover { background-color: var(--accent-hover); }
+
+        select {
+            background-color: white;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        /* Ігровий інтерфейс */
+        .game-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Поле поточної картинки */
+        .current-pic-box {
+            background-color: #f8fafc;
+            border: 3px dashed var(--accent-color);
+            padding: 15px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .current-pic-box p {
+            margin: 0 0 10px 0;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        #draggable-target {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: grab;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        /* Поле самої гри 5х5 */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            max-width: 450px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .grid-cell {
+            aspect-ratio: 1;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: #e2e8f0;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+
+        .grid-cell img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Стан при наведенні картки, яку тягнемо */
+        .ui-droppable-hover {
+            border-color: #22c55e !important;
+            box-shadow: 0 0 8px #22c55e;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        
+        <div id="menu-screen" class="screen active">
+            <h1>Гра "Знайди пару (jQuery UI)"</h1>
+            <p style="color: #64748b; margin-bottom: 25px;">Оберіть категорію картинок для гри:</p>
+            
+            <div>
+                <select id="category-select">
+                    <option value="animals">Тварини (Animals)</option>
+                    <option value="insects">Комахи (Insects)</option>
+                    <option value="fish">Риби (Fish)</option>
+                </select>
+            </div>
+            
+            <button id="start-game-btn">Почати гру</button>
+        </div>
+
+        <div id="game-screen" class="screen">
+            <div class="game-layout">
+                <div style="display: flex; justify-content: space-between; width: 100%; max-width: 450px; align-items: center;">
+                    <span style="font-weight: bold;">Знайдено пар: <span id="score-counter" style="color: #22c55e;">0</span> / 10</span>
+                    <button id="restart-btn" style="padding: 6px 12px; font-size: 0.85rem; background-color: #64748b;">Почати з початку</button>
+                </div>
+
+                <div class="current-pic-box">
+                    <p>Перетягніть цю картинку на поле сітки:</p>
+                    <div id="source-wrapper" style="width: 100px; height: 100px; margin: 0 auto;">
+                        <img id="draggable-target" src="" alt="Поточна картинка">
+                    </div>
+                </div>
+
+                <div id="game-grid" class="game-grid"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+
+</html>
