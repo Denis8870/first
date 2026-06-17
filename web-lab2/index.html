@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №2 | Події в JS</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --accent-color: #4f46e5;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.25rem;
+            margin-bottom: 10px;
+        }
+
+        .tasks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 24px;
+        }
+
+        @media (max-width: 500px) {
+            .tasks-grid { grid-template-columns: 1fr; }
+        }
+
+        .task-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .task-card h2 {
+            margin: 0 0 15px 0;
+            font-size: 1.25rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        /* Стилі для елементів завдань */
+        .img-container {
+            display: flex;
+            gap: 10px;
+        }
+        .task-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+        .links-container a {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .links-container a:hover { text-decoration: underline; }
+        
+        input {
+            display: block;
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 90%;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+        }
+        .demo-box {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f1f5f9;
+            border-left: 4px solid var(--accent-color);
+            font-weight: bold;
+        }
+        .num-paragraph {
+            background: #f1f5f9;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .num-paragraph:hover { background: #e2e8f0; }
+
+        /* Завдання 2.1 - кольорові діви */
+        .color-box {
+            width: 100px;
+            height: 100px;
+            background-color: #22c55e; /* Початковий зелений колір */
+            margin-right: 10px;
+            display: inline-block;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Лабораторна робота №2</h1>
+            <p>Тема: Обробка подій в JavaScript (DOM Events)</p>
+        </header>
+
+        <main class="tasks-grid">
+            <div class="task-card">
+                <h2>Завдання 1. Атрибут width малюнків</h2>
+                <p>Клікніть на будь-яку картинку (300x300 в коді), щоб вивести її ширину в консоль.</p>
+                <div class="img-container">
+                    <img src="https://picsum.photos/300/300?random=1" width="300" alt="Pic 1">
+                    <img src="https://picsum.photos/300/300?random=2" width="300" alt="Pic 2">
+                    <img src="https://picsum.photos/300/300?random=3" width="300" alt="Pic 3">
+                </div>
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 2. Наведення на посилання</h2>
+                <p>Наведіть курсор на посилання, щоб записати їх href в атрибут title (підказку).</p>
+                <div class="links-container">
+                    <a href="https://google.com" target="_blank">Google</a>
+                    <a href="https://github.com" target="_blank">GitHub</a>
+                    <a href="https://youtube.com" target="_blank">YouTube</a>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 3. Вивід value в абзац #demo</h2>
+                <input type="text" class="task3-input" value="Значення інпута №1">
+                <input type="text" class="task3-input" value="Значення інпута №2">
+                <input type="text" class="task3-input" value="Значення інпута №3">
+                <div id="demo" class="demo-box">Тут буде значення (value)...</div>
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 4. Перший клік — консоль, другий — alert</h2>
+                <input type="text" class="task4-input" value="Текст А">
+                <input type="text" class="task4-input" value="Текст Б">
+                <input type="text" class="task4-input" value="Текст В">
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 5. Квадрат чисел у параграфах</h2>
+                <p>Натисніть на параграф, щоб замінити число-слово на його квадрат.</p>
+                <p class="num-paragraph" data-value="5">П'ять (5)</p>
+                <p class="num-paragraph" data-value="8">Вісім (8)</p>
+                <p class="num-paragraph" data-value="12">Дванадцять (12)</p>
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 6 (Частина 2). Чергування кольору div</h2>
+                <p>Кожен клік змінює колір індивідуально (Зелений <-> Червоний) через removeEventListener.</p>
+                <div class="color-box"></div>
+                <div class="color-box"></div>
+                <div class="color-box"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
