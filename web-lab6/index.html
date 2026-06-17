@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №6 | Об'єкти та ООП в JS</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --accent-color: #8b5cf6;
+            --accent-hover: #7c3aed;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.25rem;
+            margin-bottom: 10px;
+            color: #4c1d95;
+        }
+
+        .tasks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 24px;
+        }
+
+        .task-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .task-card h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.25rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .task-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0 0 16px 0;
+            flex-grow: 1;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .result-area {
+            margin-top: 16px;
+            padding: 12px;
+            background: #f1f5f9;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            color: #334155;
+            border-left: 4px solid var(--accent-color);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Лабораторна робота №6</h1>
+            <p>Тема: Об'єкти, словники та Об'єктно-Орієнтоване Програмування (ООП)</p>
+        </header>
+
+        <main class="tasks-grid">
+            <div class="task-card">
+                <h2>Завдання 1. Багатомовний календар</h2>
+                <p>Запуск системи циклічних модальних вікон (prompt) для вибору мови (UA/EN) та дня тижня з перевіркою валідності даних.</p>
+                <button id="btn-lang-task">Запустити опитування</button>
+                <div id="res-1" class="result-area">Очікування запуску...</div>
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 2. Енергомережа міста (ООП)</h2>
+                <p>Симуляція балансу електромережі. Розрахунок генерації та споживання енергії об'єктами (ТЕС, СЕС, будинки, ЛЕП) вдень та вночі за допомогою класів JS.</p>
+                <button id="btn-oop-task">Розрахувати баланс міста</button>
+                <div id="res-2" class="result-area">Натисніть кнопку для розрахунку...</div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
