@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №7 | Date та Math</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --accent-color: #059669;
+            --accent-hover: #047857;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.25rem;
+            margin-bottom: 10px;
+            color: #064e3b;
+        }
+
+        .tasks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .task-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .task-card h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.25rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .task-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0 0 16px 0;
+            flex-grow: 1;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .result-area {
+            margin-top: 16px;
+            padding: 12px;
+            background: #f1f5f9;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            color: #334155;
+            border-left: 4px solid var(--accent-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Лабораторна робота №7</h1>
+            <p>Тема: Використання вбудованих об'єктів Date та Math в JavaScript</p>
+        </header>
+
+        <main class="tasks-grid">
+            <div class="task-card">
+                <h2>Завдання 1. Форматування дати та часу</h2>
+                <p>Виводить поточний час у консоль та на екран у форматі: "ЧЧ:ММ:СС, день_тижня, ДД назва_місяця РРРР року".</p>
+                <button id="btn-time">Показати поточний час</button>
+                <div id="res-time" class="result-area">Натисніть кнопку...</div>
+            </div>
+
+            <div class="task-card">
+                <h2>Завдання 2. Гра "Вгадай число"</h2>
+                <p>Програма генерує випадкове число від 0 до 50. Вгадуйте його за підказками (холодно/тепло/гаряче). Кожна спроба логується в консоль із часом.</p>
+                <button id="btn-game">Запустити гру</button>
+                <div id="res-game" class="result-area">Результати гри з'являться після завершення...</div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
